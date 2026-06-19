@@ -78,16 +78,10 @@ class EvSmartChargingConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         errors: dict[str, str] = {}
 
         if user_input is not None:
-            # Validate entities exist
-            for key, entity_id in user_input.items():
-                if entity_id and not self.hass.states.get(entity_id):
-                    errors[key] = "entity_not_found"
-
-            if not errors:
-                self._data.update(user_input)
-                if self._data.get(CONF_MQTT_ENABLED):
-                    return await self.async_step_mqtt()
-                return self._create_entry()
+            self._data.update(user_input)
+            if self._data.get(CONF_MQTT_ENABLED):
+                return await self.async_step_mqtt()
+            return self._create_entry()
 
         schema_fields: dict = {
             vol.Required(CONF_VEHICLE_SOC_ENTITY): selector.EntitySelector(
