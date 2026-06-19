@@ -159,13 +159,13 @@ IDLE (in attesa)
 
 ```yaml
 # Autorizza ricarica manualmente
-service: ev_smart_charging.authorize_charging
+service: supersmart_ev_charging.authorize_charging
 
 # Revoca autorizzazione manualmente
-service: ev_smart_charging.revoke_charging
+service: supersmart_ev_charging.revoke_charging
 
 # Imposta limite di corrente manualmente
-service: ev_smart_charging.set_charge_limit
+service: supersmart_ev_charging.set_charge_limit
 data:
   current_a: 10   # valore tra 6 e 16
 ```
@@ -195,7 +195,7 @@ entities:
 ## Struttura file
 
 ```
-custom_components/ev_smart_charging/
+custom_components/supersmart_ev_charging/
 ├── __init__.py          # Setup integrazione e servizi HA
 ├── coordinator.py       # Logica smart charging + comandi MQTT
 ├── config_flow.py       # Configurazione guidata in 3 step
