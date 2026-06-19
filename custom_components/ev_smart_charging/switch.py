@@ -1,4 +1,4 @@
-"""Switch platform for EV Smart Charging."""
+"""Switch platform for SuperSmart EV Charging."""
 from __future__ import annotations
 
 import logging
