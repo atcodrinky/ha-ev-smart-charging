@@ -1,0 +1,61 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "EV Smart Charging – General settings",
+        "data": {
+          "contract_power_w":     "Contract power limit (W)",
+          "battery_capacity_kwh": "Vehicle battery capacity (kWh)",
+          "tariff_enabled":       "Enable off-peak tariff charging",
+          "mqtt_enabled":         "Enable wallbox control via MQTT"
+        }
+      },
+      "entities": {
+        "title": "Entity selection",
+        "data": {
+          "vehicle_soc_entity":          "Vehicle SOC sensor (%)",
+          "vehicle_connected_entity":    "Cable connected binary sensor",
+          "vehicle_charge_limit_entity": "Vehicle charge limit number (optional)",
+          "grid_power_entity":           "Grid power sensor (W)",
+          "pv_power_entity":             "PV production sensor (W)",
+          "wallbox_state_entity":        "Wallbox state sensor (optional)",
+          "wallbox_power_entity":        "Wallbox power sensor (optional)",
+          "wallbox_voltage_entity":      "Wallbox voltage sensor (optional)",
+          "tariff_entity":               "Tariff band sensor (optional)",
+          "tariff_offpeak_value":        "Off-peak value (e.g. F3, cheap, low)"
+        }
+      },
+      "mqtt": {
+        "title": "Wallbox MQTT configuration",
+        "data": {
+          "mqtt_topic_authorize":     "Authorize charging topic",
+          "mqtt_topic_revoke":        "Revoke authorization topic",
+          "mqtt_topic_set_current":   "Set current limit topic (A)",
+          "mqtt_topic_set_mode":      "Set mode topic (optional)",
+          "mqtt_payload_mode_solar":  "Solar mode payload",
+          "mqtt_payload_mode_normal": "Normal mode payload",
+          "mqtt_payload_mode_pause":  "Pause mode payload"
+        }
+      }
+    },
+    "error": {
+      "entity_not_found": "Entity not found in Home Assistant"
+    },
+    "abort": {
+      "already_configured": "Integration already configured"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Options",
+        "data": {
+          "contract_power_w":     "Contract power limit (W)",
+          "battery_capacity_kwh": "Battery capacity (kWh)",
+          "tariff_enabled":       "Enable off-peak charging",
+          "mqtt_enabled":         "Enable MQTT"
+        }
+      }
+    }
+  }
+}

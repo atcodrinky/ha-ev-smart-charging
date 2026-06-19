@@ -1,0 +1,13 @@
+{
+  "domain": "ev_smart_charging",
+  "name": "EV Smart Charging",
+  "version": "1.0.0",
+  "documentation": "https://github.com/atcodrinky/ha-ev-smart-charging",
+  "issue_tracker": "https://github.com/atcodrinky/ha-ev-smart-charging/issues",
+  "codeowners": ["@atcodrinky"],
+  "requirements": [],
+  "dependencies": [],
+  "after_dependencies": ["mqtt"],
+  "iot_class": "local_push",
+  "config_flow": true
+}
