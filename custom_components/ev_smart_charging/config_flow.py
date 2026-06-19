@@ -1,4 +1,4 @@
-"""Config flow for EV Smart Charging – generic, wallbox/vehicle agnostic."""
+"""Config flow for SuperSmart EV Charging – generic, wallbox/vehicle agnostic."""
 from __future__ import annotations
 
 import logging
