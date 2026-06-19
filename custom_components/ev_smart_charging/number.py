@@ -1,4 +1,4 @@
-"""Number platform for EV Smart Charging."""
+"""Number platform for SuperSmart EV Charging."""
 from __future__ import annotations
 
 from homeassistant.components.number import NumberEntity, NumberMode
