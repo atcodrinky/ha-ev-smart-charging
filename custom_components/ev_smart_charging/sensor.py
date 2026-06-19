@@ -1,4 +1,4 @@
-"""Sensor platform for EV Smart Charging."""
+"""Sensor platform for SuperSmart EV Charging."""
 from __future__ import annotations
 
 from datetime import datetime
