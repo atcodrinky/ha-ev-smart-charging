@@ -1,6 +1,6 @@
-"""Constants for EV Smart Charging integration."""
+"""Constants for SuperSmart EV Charging integration."""
 
-DOMAIN = "ev_smart_charging"
+DOMAIN = "supersmart_ev_charging"
 
 # ── Config entry keys ──────────────────────────────────────────────────────────
 
