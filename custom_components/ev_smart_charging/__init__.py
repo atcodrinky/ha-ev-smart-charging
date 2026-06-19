@@ -1,4 +1,4 @@
-"""EV Smart Charging – generic Home Assistant integration."""
+"""SuperSmart EV Charging – generic Home Assistant integration."""
 from __future__ import annotations
 
 import logging
