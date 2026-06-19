@@ -1,4 +1,4 @@
-"""Coordinator for EV Smart Charging – generic vehicle/wallbox logic."""
+"""Coordinator for SuperSmart EV Charging – generic vehicle/wallbox logic."""
 from __future__ import annotations
 
 import logging
