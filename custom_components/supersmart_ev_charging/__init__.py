@@ -23,7 +23,7 @@ PLATFORMS: list[Platform] = [
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
-    """Set up EV Smart Charging from a config entry."""
+    """Set up SuperSmart EV Charging from a config entry."""
     hass.data.setdefault(DOMAIN, {})
 
     coordinator = SuperSmartEvChargingCoordinator(hass, entry)
