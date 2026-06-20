@@ -49,7 +49,7 @@ from .const import (
 _LOGGER = logging.getLogger(__name__)
 
 
-class EvSmartChargingConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
+class SuperSmartEvChargingConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     """3-step config flow: power → entities → mqtt."""
 
     VERSION = 1
