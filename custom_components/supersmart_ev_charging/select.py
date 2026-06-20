@@ -17,23 +17,23 @@ from .const import (
     CHARGING_MODE_FORCE,
     CHARGING_MODE_MASTER_STOP,
 )
-from .coordinator import EvSmartChargingCoordinator
+from .coordinator import SuperSmartEvChargingCoordinator
 
 _LOGGER = logging.getLogger(__name__)
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry, async_add_entities: AddEntitiesCallback) -> None:
-    coordinator: EvSmartChargingCoordinator = hass.data[DOMAIN][entry.entry_id]
+    coordinator: SuperSmartEvChargingCoordinator = hass.data[DOMAIN][entry.entry_id]
     async_add_entities([ChargingModeSelect(coordinator, entry)])
 
 
-class ChargingModeSelect(CoordinatorEntity[EvSmartChargingCoordinator], SelectEntity):
+class ChargingModeSelect(CoordinatorEntity[SuperSmartEvChargingCoordinator], SelectEntity):
     _attr_has_entity_name = True
     _attr_name    = "Charging Mode"
     _attr_options = CHARGING_MODES
     _attr_icon    = "mdi:ev-plug-type2"
 
-    def __init__(self, coordinator: EvSmartChargingCoordinator, entry: ConfigEntry) -> None:
+    def __init__(self, coordinator: SuperSmartEvChargingCoordinator, entry: ConfigEntry) -> None:
         super().__init__(coordinator)
         self._attr_unique_id   = f"{entry.entry_id}_charging_mode_select"
         self._attr_device_info = {
