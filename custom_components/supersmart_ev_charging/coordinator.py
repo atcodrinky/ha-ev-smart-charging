@@ -52,7 +52,7 @@ from .const import (
 _LOGGER = logging.getLogger(__name__)
 
 
-class EvSmartChargingCoordinator(DataUpdateCoordinator):
+class SuperSmartEvChargingCoordinator(DataUpdateCoordinator):
     """
     Generic EV smart charging coordinator.
 
