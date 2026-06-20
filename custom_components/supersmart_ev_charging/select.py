@@ -38,8 +38,8 @@ class ChargingModeSelect(CoordinatorEntity[SuperSmartEvChargingCoordinator], Sel
         self._attr_unique_id   = f"{entry.entry_id}_charging_mode_select"
         self._attr_device_info = {
             "identifiers": {(DOMAIN, entry.entry_id)},
-            "name": "EV Smart Charging",
-            "manufacturer": "ev_smart_charging",
+            "name": "SuperSmart EV Charging",
+            "manufacturer": "atcodrinky",
             "model": "Generic EV Energy Manager",
         }
 
