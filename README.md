@@ -54,7 +54,7 @@ Esempi testati: Skoda Elroq, Volkswagen ID.4, Renault Zoe, Tesla (via unofficial
 2. Inserire l'URL di questo repository, categoria **Integrazione**
 3. Cliccare **Installa**
 4. Riavviare Home Assistant
-5. **Impostazioni → Dispositivi e servizi → Aggiungi integrazione** → cercare **EV Smart Charging**
+5. **Impostazioni → Dispositivi e servizi → Aggiungi integrazione** → cercare **SuperSmart EV Charging**
 
 ---
 
@@ -176,7 +176,7 @@ data:
 
 ```yaml
 type: entities
-title: EV Smart Charging
+title: SuperSmart EV Charging
 entities:
   - entity: select.charging_mode
   - entity: sensor.pv_surplus
