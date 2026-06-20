@@ -147,11 +147,11 @@ class SuperSmartEvChargingConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     # ── Options flow ───────────────────────────────────────────────────────────
     @staticmethod
     @callback
-    def async_get_options_flow(config_entry: config_entries.ConfigEntry) -> EvSmartChargingOptionsFlow:
-        return EvSmartChargingOptionsFlow(config_entry)
+    def async_get_options_flow(config_entry: config_entries.ConfigEntry) -> SuperSmartEvChargingOptionsFlow:
+        return SuperSmartEvChargingOptionsFlow(config_entry)
 
 
-class EvSmartChargingOptionsFlow(config_entries.OptionsFlow):
+class SuperSmartEvChargingOptionsFlow(config_entries.OptionsFlow):
     """Allow editing key parameters without re-running the full flow."""
 
     def __init__(self, config_entry: config_entries.ConfigEntry) -> None:
