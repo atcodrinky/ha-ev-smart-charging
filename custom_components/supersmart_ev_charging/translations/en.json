@@ -2,7 +2,7 @@
   "config": {
     "step": {
       "user": {
-        "title": "EV Smart Charging – General settings",
+        "title": "SuperSmart EV Charging – General settings",
         "data": {
           "contract_power_w":     "Contract power limit (W)",
           "battery_capacity_kwh": "Vehicle battery capacity (kWh)",
@@ -15,7 +15,7 @@
         "data": {
           "vehicle_soc_entity":          "Vehicle SOC sensor (%)",
           "vehicle_connected_entity":    "Cable connected binary sensor",
-          "vehicle_charge_limit_entity": "Vehicle charge limit number (optional)",
+          "vehicle_charge_limit_entity": "Vehicle charge limit (optional)",
           "grid_power_entity":           "Grid power sensor (W)",
           "pv_power_entity":             "PV production sensor (W)",
           "wallbox_state_entity":        "Wallbox state sensor (optional)",
