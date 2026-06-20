@@ -15,14 +15,14 @@
         "data": {
           "vehicle_soc_entity":           "Sensore SOC veicolo (%)",
           "vehicle_connected_entity":     "Binary sensor cavo collegato",
-          "vehicle_charge_limit_entity":  "Numero limite di carica veicolo (opzionale)",
+          "vehicle_charge_limit_entity":  "Limite di carica veicolo (opzionale)",
           "grid_power_entity":            "Sensore potenza rete (W)",
           "pv_power_entity":              "Sensore produzione fotovoltaica (W)",
           "wallbox_state_entity":         "Sensore stato wallbox (opzionale)",
           "wallbox_power_entity":         "Sensore potenza wallbox (opzionale)",
           "wallbox_voltage_entity":       "Sensore tensione wallbox (opzionale)",
           "tariff_entity":                "Sensore fascia tariffaria (opzionale)",
-          "tariff_offpeak_value":         "Valore fascia off-peak (es. F3, cheap)"
+          "tariff_offpeak_value":         "Valore fascia off-peak (es. F3, economica)"
         }
       },
       "mqtt": {
