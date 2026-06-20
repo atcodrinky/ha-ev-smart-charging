@@ -142,7 +142,7 @@ class SuperSmartEvChargingConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         )
 
     def _create_entry(self) -> FlowResult:
-        return self.async_create_entry(title="EV Smart Charging", data=self._data)
+        return self.async_create_entry(title="SuperSmart EV Charging", data=self._data)
 
     # ── Options flow ───────────────────────────────────────────────────────────
     @staticmethod
