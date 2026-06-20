@@ -29,7 +29,7 @@ from .coordinator import SuperSmartEvChargingCoordinator
 _DEVICE_INFO = lambda entry_id: {
     "identifiers": {(DOMAIN, entry_id)},
     "name": "SuperSmart EV Charging",
-    "manufacturer": "supersmart_ev_charging",
+    "manufacturer": "atcodrinky",
     "model": "Generic EV Energy Manager",
 }
 
