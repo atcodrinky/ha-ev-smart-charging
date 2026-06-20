@@ -14,7 +14,7 @@
         "title": "Selezione entità",
         "data": {
           "vehicle_soc_entity":           "Sensore SOC veicolo (%)",
-          "vehicle_connected_entity":     "Binary sensor cavo collegato",
+          "vehicle_connected_entity":     "Sensore binario cavo collegato",
           "vehicle_charge_limit_entity":  "Limite di carica veicolo (opzionale)",
           "grid_power_entity":            "Sensore potenza rete (W)",
           "pv_power_entity":              "Sensore produzione fotovoltaica (W)",
