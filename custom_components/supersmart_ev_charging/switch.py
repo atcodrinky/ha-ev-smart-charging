@@ -17,7 +17,7 @@ from .const import (
     SWITCH_SOLAR_CONTROLLER,
     SWITCH_NIGHT_CHARGING,
 )
-from .coordinator import EvSmartChargingCoordinator
+from .coordinator import SuperSmartEvChargingCoordinator
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -30,7 +30,7 @@ _DEVICE_INFO = lambda entry_id: {
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry, async_add_entities: AddEntitiesCallback) -> None:
-    coordinator: EvSmartChargingCoordinator = hass.data[DOMAIN][entry.entry_id]
+    coordinator: SuperSmartEvChargingCoordinator = hass.data[DOMAIN][entry.entry_id]
     async_add_entities([
         MasterStopSwitch(coordinator, entry),
         ForceChargeSwitch(coordinator, entry),
@@ -39,10 +39,10 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry, async_add_e
     ])
 
 
-class _Base(CoordinatorEntity[EvSmartChargingCoordinator], SwitchEntity):
+class _Base(CoordinatorEntity[SuperSmartEvChargingCoordinator], SwitchEntity):
     _attr_has_entity_name = True
 
-    def __init__(self, coordinator: EvSmartChargingCoordinator, entry: ConfigEntry, suffix: str) -> None:
+    def __init__(self, coordinator: SuperSmartEvChargingCoordinator, entry: ConfigEntry, suffix: str) -> None:
         super().__init__(coordinator)
         self._attr_unique_id   = f"{entry.entry_id}_{suffix}"
         self._attr_device_info = _DEVICE_INFO(entry.entry_id)
