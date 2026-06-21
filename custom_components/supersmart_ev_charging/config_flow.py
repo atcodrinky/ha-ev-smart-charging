@@ -52,7 +52,7 @@ _LOGGER = logging.getLogger(__name__)
 class SuperSmartEvChargingConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     """3-step config flow: power → entities → mqtt."""
 
-    VERSION = 2
+    VERSION = 1
 
     def __init__(self) -> None:
         self._data: dict[str, Any] = {}
