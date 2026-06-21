@@ -1,4 +1,4 @@
-"""Coordinator for SuperSmart EV Charging – core smart charging logic."""
+"""Coordinator for SuperSmart EV Charging"""
 from __future__ import annotations
 
 import logging
