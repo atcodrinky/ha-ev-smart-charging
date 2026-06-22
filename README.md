@@ -2,7 +2,6 @@
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/hacs/integration)
 [![HA Version](https://img.shields.io/badge/Home%20Assistant-2024.1%2B-blue.svg)](https://www.home-assistant.io/)
-[![License: MIT](assets/badge-license.png)](LICENSE)
 
 > Integrazione HACS generica per la ricarica intelligente di veicoli elettrici.  
 > Compatibile con qualsiasi EV, qualsiasi wallbox MQTT e qualsiasi impianto fotovoltaico.
