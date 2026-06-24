@@ -32,7 +32,7 @@
 
 <!-- YES left -->
 <line x1="210" y1="126" x2="150" y2="126" class="arr" marker-end="url(#arrow)"/>
-<text class="ts" x="208" y="118" text-anchor="end" fill="#1a1a1a">sì</text>
+<text class="ts" x="180" y="115" text-anchor="middle" fill="#1a1a1a">sì</text>
 
 <!-- MASTER STOP block -->
 <rect x="20" y="100" width="130" height="80" rx="8" fill="#F7C1C1" stroke="#A32D2D" stroke-width="0.5"/>
@@ -46,7 +46,7 @@
 
 <!-- NO down -->
 <line x1="340" y1="152" x2="340" y2="188" class="arr" marker-end="url(#arrow)"/>
-<text class="ts" x="350" y="174" fill="#1a1a1a">no</text>
+<text class="ts" x="350" y="170" text-anchor="middle" fill="#1a1a1a">no</text>
 
 <!-- ════════════════ DECISION 2: FORZA ════════════════ -->
 <rect x="210" y="188" width="260" height="52" rx="8" fill="#B5D4F4" stroke="#185FA5" stroke-width="0.5"/>
@@ -55,7 +55,7 @@
 
 <!-- YES right -->
 <line x1="470" y1="214" x2="570" y2="214" class="arr" marker-end="url(#arrow)"/>
-<text class="ts" x="478" y="207" fill="#1a1a1a">sì</text>
+<text class="ts" x="520" y="204" text-anchor="middle" fill="#1a1a1a">sì</text>
 
 <!-- FORZA block -->
 <rect x="570" y="188" width="96" height="80" rx="8" fill="#FAC775" stroke="#BA7517" stroke-width="0.5"/>
@@ -72,7 +72,7 @@
 
 <!-- NO down -->
 <line x1="340" y1="240" x2="340" y2="276" class="arr" marker-end="url(#arrow)"/>
-<text class="ts" x="350" y="262" fill="#1a1a1a">no</text>
+<text class="ts" x="350" y="258" text-anchor="middle" fill="#1a1a1a">no</text>
 
 <!-- ════════════════ DECISION 3: NOTTE F3 ════════════════ -->
 <rect x="200" y="276" width="280" height="52" rx="8" fill="#B5D4F4" stroke="#185FA5" stroke-width="0.5"/>
@@ -81,7 +81,7 @@
 
 <!-- YES right connector -->
 <path d="M480 302 L618 302 L618 370" fill="none" stroke="#888" stroke-width="1.2" marker-end="url(#arrow)"/>
-<text class="ts" x="488" y="295" fill="#1a1a1a">sì</text>
+<text class="ts" x="549" y="292" text-anchor="middle" fill="#1a1a1a">sì</text>
 
 <!-- NOTTE block -->
 <rect x="570" y="370" width="96" height="80" rx="8" fill="#CECBF6" stroke="#534AB7" stroke-width="0.5"/>
@@ -95,10 +95,10 @@
 <text class="th" x="618" y="515" text-anchor="middle" dominant-baseline="central" fill="#0C447C">user target?</text>
 
 <path d="M570 502 L540 502 L540 410 L570 410" fill="none" stroke="#aaa" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
-<text class="ts" x="535" y="458" text-anchor="end" fill="#1a1a1a">no</text>
+<text class="ts" x="555" y="498" text-anchor="middle" fill="#1a1a1a">no</text>
 
 <line x1="618" y1="526" x2="618" y2="556" class="arr" marker-end="url(#arrow)"/>
-<text class="ts" x="628" y="544" fill="#1a1a1a">sì</text>
+<text class="ts" x="628" y="541" text-anchor="middle" fill="#1a1a1a">sì</text>
 <rect x="570" y="556" width="96" height="52" rx="6" fill="#D3D1C7" stroke="#888780" stroke-width="0.5"/>
 <text class="th" x="618" y="571" text-anchor="middle" dominant-baseline="central" fill="#1a1a1a">STOP</text>
 <text class="ts" x="618" y="587" text-anchor="middle" dominant-baseline="central" fill="#1a1a1a">user target</text>
@@ -106,7 +106,7 @@
 
 <!-- NO down -->
 <line x1="340" y1="328" x2="340" y2="364" class="arr" marker-end="url(#arrow)"/>
-<text class="ts" x="350" y="350" fill="#1a1a1a">no</text>
+<text class="ts" x="350" y="346" text-anchor="middle" fill="#1a1a1a">no</text>
 
 <!-- ════════════════ DECISION 4: SURPLUS FV ════════════════ -->
 <rect x="190" y="364" width="300" height="52" rx="8" fill="#B5D4F4" stroke="#185FA5" stroke-width="0.5"/>
@@ -115,7 +115,7 @@
 
 <!-- YES left -->
 <line x1="190" y1="390" x2="110" y2="390" class="arr" marker-end="url(#arrow)"/>
-<text class="ts" x="182" y="382" fill="#1a1a1a">sì</text>
+<text class="ts" x="150" y="379" text-anchor="middle" fill="#1a1a1a">sì</text>
 
 <!-- SURPLUS FV block -->
 <rect x="20" y="364" width="90" height="80" rx="8" fill="#5DCAA5" stroke="#0F6E56" stroke-width="0.5"/>
@@ -129,10 +129,10 @@
 <text class="th" x="65" y="509" text-anchor="middle" dominant-baseline="central" fill="#0C447C">per 60s?</text>
 
 <path d="M110 496 L140 496 L140 404 L110 404" fill="none" stroke="#aaa" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
-<text class="ts" x="148" y="454" fill="#1a1a1a">no</text>
+<text class="ts" x="125" y="490" text-anchor="middle" fill="#1a1a1a">no</text>
 
 <line x1="65" y1="520" x2="65" y2="552" class="arr" marker-end="url(#arrow)"/>
-<text class="ts" x="75" y="538" fill="#1a1a1a">sì</text>
+<text class="ts" x="75" y="534" text-anchor="middle" fill="#1a1a1a">sì</text>
 <rect x="20" y="552" width="90" height="52" rx="6" fill="#D3D1C7" stroke="#888780" stroke-width="0.5"/>
 <text class="th" x="65" y="567" text-anchor="middle" dominant-baseline="central" fill="#1a1a1a">STOP</text>
 <text class="ts" x="65" y="583" text-anchor="middle" dominant-baseline="central" fill="#1a1a1a">vehicle target</text>
@@ -140,7 +140,7 @@
 
 <!-- NO → IDLE -->
 <line x1="340" y1="416" x2="340" y2="452" class="arr" marker-end="url(#arrow)"/>
-<text class="ts" x="350" y="438" fill="#1a1a1a">no</text>
+<text class="ts" x="350" y="434" text-anchor="middle" fill="#1a1a1a">no</text>
 
 <!-- IDLE -->
 <rect x="220" y="452" width="240" height="44" rx="22" fill="#D3D1C7" stroke="#888780" stroke-width="0.5"/>
@@ -204,16 +204,16 @@
 <line x1="40" y1="952" x2="640" y2="952" stroke="#ccc" stroke-width="0.5" stroke-dasharray="4 3"/>
 <text class="th" x="340" y="978" text-anchor="middle" fill="#1a1a1a">Priorità modalità</text>
 
-<rect x="20"  y="993" width="120" height="34" rx="6" fill="#F7C1C1" stroke="#A32D2D" stroke-width="0.5"/>
-<text class="th" x="80"  y="1010" text-anchor="middle" dominant-baseline="central" fill="#791F1F">1. Master Stop</text>
-<rect x="154" y="993" width="90"  height="34" rx="6" fill="#FAC775" stroke="#BA7517" stroke-width="0.5"/>
-<text class="th" x="199" y="1010" text-anchor="middle" dominant-baseline="central" fill="#633806">2. Forza</text>
-<rect x="258" y="993" width="96"  height="34" rx="6" fill="#CECBF6" stroke="#534AB7" stroke-width="0.5"/>
-<text class="th" x="306" y="1010" text-anchor="middle" dominant-baseline="central" fill="#26215C">3. Notte F3</text>
-<rect x="368" y="993" width="110" height="34" rx="6" fill="#9FE1CB" stroke="#0F6E56" stroke-width="0.5"/>
-<text class="th" x="423" y="1010" text-anchor="middle" dominant-baseline="central" fill="#04342C">4. Surplus FV</text>
-<rect x="492" y="993" width="60"  height="34" rx="6" fill="#D3D1C7" stroke="#888780" stroke-width="0.5"/>
-<text class="th" x="522" y="1010" text-anchor="middle" dominant-baseline="central" fill="#1a1a1a">5. Idle</text>
+<rect x="74"  y="993" width="120" height="34" rx="6" fill="#F7C1C1" stroke="#A32D2D" stroke-width="0.5"/>
+<text class="th" x="134" y="1010" text-anchor="middle" dominant-baseline="central" fill="#791F1F">1. Master Stop</text>
+<rect x="208" y="993" width="90"  height="34" rx="6" fill="#FAC775" stroke="#BA7517" stroke-width="0.5"/>
+<text class="th" x="253" y="1010" text-anchor="middle" dominant-baseline="central" fill="#633806">2. Forza</text>
+<rect x="312" y="993" width="96"  height="34" rx="6" fill="#CECBF6" stroke="#534AB7" stroke-width="0.5"/>
+<text class="th" x="360" y="1010" text-anchor="middle" dominant-baseline="central" fill="#26215C">3. Notte F3</text>
+<rect x="422" y="993" width="110" height="34" rx="6" fill="#9FE1CB" stroke="#0F6E56" stroke-width="0.5"/>
+<text class="th" x="477" y="1010" text-anchor="middle" dominant-baseline="central" fill="#04342C">4. Surplus FV</text>
+<rect x="546" y="993" width="60"  height="34" rx="6" fill="#D3D1C7" stroke="#888780" stroke-width="0.5"/>
+<text class="th" x="576" y="1010" text-anchor="middle" dominant-baseline="central" fill="#1a1a1a">5. Idle</text>
 
 <!-- ════════════════ SICUREZZE + ENTITÀ ════════════════ -->
 <line x1="40" y1="1048" x2="640" y2="1048" stroke="#ccc" stroke-width="0.5" stroke-dasharray="4 3"/>
@@ -253,7 +253,7 @@
 <rect x="556" y="1278" width="14" height="14" rx="3" fill="#F09595"/>
 <text class="ts" x="576" y="1285" dominant-baseline="central" fill="#1a1a1a">Stop</text>
 
-<text class="ts" x="340" y="1340" text-anchor="middle" fill="#1a1a1a">v1.3.0-beta – github.com/atcodrinky/ha-supersmart-ev-charging</text>
+<text class="ts" x="340" y="1340" text-anchor="middle" fill="#1a1a1a">v1.3.0 – github.com/atcodrinky/ha-supersmart-ev-charging</text>
 <text class="ts" x="340" y="1360" text-anchor="middle" fill="#1a1a1a">SuperSmart EV Charging – HACS Integration</text>
 
 </svg>
