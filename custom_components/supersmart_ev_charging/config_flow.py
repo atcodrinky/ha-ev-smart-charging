@@ -1,4 +1,4 @@
-"""Config flow for SuperSmart EV Charging – generic, wallbox/vehicle agnostic."""
+"""Config flow for SuperSmart EV Charging."""
 from __future__ import annotations
 
 import logging
@@ -44,20 +44,30 @@ from .const import (
     DEFAULT_MQTT_PAYLOAD_MODE_NORMAL,
     DEFAULT_MQTT_PAYLOAD_MODE_PAUSE,
     DEFAULT_TARIFF_OFFPEAK_VALUE,
+    DEFAULT_USER_SOC_TARGET,
+    DEFAULT_VEHICLE_SOC_TARGET,
 )
 
 _LOGGER = logging.getLogger(__name__)
 
+CONF_INITIAL_USER_SOC_TARGET    = "initial_user_soc_target"
+CONF_INITIAL_VEHICLE_SOC_TARGET = "initial_vehicle_soc_target"
+
 
 class SuperSmartEvChargingConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
-    """3-step config flow: power → entities → mqtt."""
+    """
+    3-step config flow for SuperSmart EV Charging:
+    Step 1 – General settings (power, battery, SOC targets, feature flags)
+    Step 2 – Entity selection (vehicle, wallbox, energy sensors)
+    Step 3 – MQTT configuration (topics and payloads)
+    """
 
     VERSION = 1
 
     def __init__(self) -> None:
         self._data: dict[str, Any] = {}
 
-    # ── Step 1: general settings ───────────────────────────────────────────────
+    # ── Step 1: General settings ───────────────────────────────────────────────
     async def async_step_user(self, user_input: dict[str, Any] | None = None) -> FlowResult:
         if user_input is not None:
             self._data.update(user_input)
@@ -66,17 +76,17 @@ class SuperSmartEvChargingConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         return self.async_show_form(
             step_id="user",
             data_schema=vol.Schema({
-                vol.Required(CONF_CONTRACT_POWER_W, default=DEFAULT_CONTRACT_POWER_W): vol.Coerce(int),
-                vol.Required(CONF_BATTERY_CAPACITY_KWH, default=DEFAULT_BATTERY_CAPACITY_KWH): vol.Coerce(float),
-                vol.Required(CONF_TARIFF_ENABLED, default=True): bool,
-                vol.Required(CONF_MQTT_ENABLED, default=True): bool,
+                vol.Required(CONF_CONTRACT_POWER_W,             default=DEFAULT_CONTRACT_POWER_W):    vol.Coerce(int),
+                vol.Required(CONF_BATTERY_CAPACITY_KWH,         default=DEFAULT_BATTERY_CAPACITY_KWH): vol.Coerce(float),
+                vol.Required(CONF_INITIAL_USER_SOC_TARGET,      default=DEFAULT_USER_SOC_TARGET):     vol.All(vol.Coerce(int), vol.Range(min=10, max=100)),
+                vol.Required(CONF_INITIAL_VEHICLE_SOC_TARGET,   default=DEFAULT_VEHICLE_SOC_TARGET):  vol.All(vol.Coerce(int), vol.Range(min=20, max=100)),
+                vol.Required(CONF_TARIFF_ENABLED,               default=True): bool,
+                vol.Required(CONF_MQTT_ENABLED,                 default=True): bool,
             }),
         )
 
-    # ── Step 2: entity selection ───────────────────────────────────────────────
+    # ── Step 2: Entity selection ───────────────────────────────────────────────
     async def async_step_entities(self, user_input: dict[str, Any] | None = None) -> FlowResult:
-        errors: dict[str, str] = {}
-
         if user_input is not None:
             self._data.update(user_input)
             if self._data.get(CONF_MQTT_ENABLED):
@@ -91,7 +101,7 @@ class SuperSmartEvChargingConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 selector.EntitySelectorConfig(domain="binary_sensor")
             ),
             vol.Optional(CONF_VEHICLE_CHARGE_LIMIT_ENTITY): selector.EntitySelector(
-                selector.EntitySelectorConfig(domain="number")
+                selector.EntitySelectorConfig(domain=["number", "input_number"])
             ),
             vol.Required(CONF_GRID_POWER_ENTITY): selector.EntitySelector(
                 selector.EntitySelectorConfig(domain="sensor")
@@ -112,17 +122,16 @@ class SuperSmartEvChargingConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
         if self._data.get(CONF_TARIFF_ENABLED):
             schema_fields[vol.Optional(CONF_TARIFF_ENTITY)] = selector.EntitySelector(
-                selector.EntitySelectorConfig(domain="sensor")
+                selector.EntitySelectorConfig(domain=["sensor", "input_select"])
             )
             schema_fields[vol.Optional(CONF_TARIFF_OFFPEAK_VALUE, default=DEFAULT_TARIFF_OFFPEAK_VALUE)] = str
 
         return self.async_show_form(
             step_id="entities",
             data_schema=vol.Schema(schema_fields),
-            errors=errors,
         )
 
-    # ── Step 3: MQTT topics & payloads ────────────────────────────────────────
+    # ── Step 3: MQTT configuration ─────────────────────────────────────────────
     async def async_step_mqtt(self, user_input: dict[str, Any] | None = None) -> FlowResult:
         if user_input is not None:
             self._data.update(user_input)
@@ -142,17 +151,22 @@ class SuperSmartEvChargingConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         )
 
     def _create_entry(self) -> FlowResult:
-        return self.async_create_entry(title="SuperSmart EV Charging", data=self._data)
+        return self.async_create_entry(
+            title="SuperSmart EV Charging",
+            data=self._data,
+        )
 
     # ── Options flow ───────────────────────────────────────────────────────────
     @staticmethod
     @callback
-    def async_get_options_flow(config_entry: config_entries.ConfigEntry) -> SuperSmartEvChargingOptionsFlow:
+    def async_get_options_flow(
+        config_entry: config_entries.ConfigEntry,
+    ) -> SuperSmartEvChargingOptionsFlow:
         return SuperSmartEvChargingOptionsFlow(config_entry)
 
 
 class SuperSmartEvChargingOptionsFlow(config_entries.OptionsFlow):
-    """Allow editing key parameters without re-running the full flow."""
+    """Options flow – edit key parameters post-setup."""
 
     def __init__(self, config_entry: config_entries.ConfigEntry) -> None:
         self.config_entry = config_entry
@@ -165,9 +179,29 @@ class SuperSmartEvChargingOptionsFlow(config_entries.OptionsFlow):
         return self.async_show_form(
             step_id="init",
             data_schema=vol.Schema({
-                vol.Required(CONF_CONTRACT_POWER_W,    default=d.get(CONF_CONTRACT_POWER_W,    DEFAULT_CONTRACT_POWER_W)):    vol.Coerce(int),
-                vol.Required(CONF_BATTERY_CAPACITY_KWH, default=d.get(CONF_BATTERY_CAPACITY_KWH, DEFAULT_BATTERY_CAPACITY_KWH)): vol.Coerce(float),
-                vol.Required(CONF_TARIFF_ENABLED,      default=d.get(CONF_TARIFF_ENABLED,      True)):                        bool,
-                vol.Required(CONF_MQTT_ENABLED,        default=d.get(CONF_MQTT_ENABLED,        True)):                        bool,
+                vol.Required(
+                    CONF_CONTRACT_POWER_W,
+                    default=d.get(CONF_CONTRACT_POWER_W, DEFAULT_CONTRACT_POWER_W),
+                ): vol.Coerce(int),
+                vol.Required(
+                    CONF_BATTERY_CAPACITY_KWH,
+                    default=d.get(CONF_BATTERY_CAPACITY_KWH, DEFAULT_BATTERY_CAPACITY_KWH),
+                ): vol.Coerce(float),
+                vol.Required(
+                    CONF_INITIAL_USER_SOC_TARGET,
+                    default=d.get(CONF_INITIAL_USER_SOC_TARGET, DEFAULT_USER_SOC_TARGET),
+                ): vol.All(vol.Coerce(int), vol.Range(min=10, max=100)),
+                vol.Required(
+                    CONF_INITIAL_VEHICLE_SOC_TARGET,
+                    default=d.get(CONF_INITIAL_VEHICLE_SOC_TARGET, DEFAULT_VEHICLE_SOC_TARGET),
+                ): vol.All(vol.Coerce(int), vol.Range(min=20, max=100)),
+                vol.Required(
+                    CONF_TARIFF_ENABLED,
+                    default=d.get(CONF_TARIFF_ENABLED, True),
+                ): bool,
+                vol.Required(
+                    CONF_MQTT_ENABLED,
+                    default=d.get(CONF_MQTT_ENABLED, True),
+                ): bool,
             }),
         )
