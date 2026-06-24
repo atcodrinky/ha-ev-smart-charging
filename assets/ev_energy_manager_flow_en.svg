@@ -253,7 +253,7 @@
 <rect x="556" y="1278" width="14" height="14" rx="3" fill="#F09595"/>
 <text class="ts" x="576" y="1285" dominant-baseline="central" fill="#1a1a1a">Stop</text>
 
-<text class="ts" x="340" y="1340" text-anchor="middle" fill="#1a1a1a">v1.3.0 – github.com/atcodrinky/ha-supersmart-ev-charging</text>
+<text class="ts" x="340" y="1340" text-anchor="middle" fill="#1a1a1a">v1.3.0-beta – github.com/atcodrinky/ha-supersmart-ev-charging</text>
 <text class="ts" x="340" y="1360" text-anchor="middle" fill="#1a1a1a">SuperSmart EV Charging – HACS Integration</text>
 
 </svg>
