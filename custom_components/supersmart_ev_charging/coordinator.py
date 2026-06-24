@@ -258,37 +258,128 @@ class SuperSmartEvChargingCoordinator(DataUpdateCoordinator):
             self.async_update_listeners()
             return
 
-        # ── 3. NIGHT / OFF-PEAK TARIFF ────────────────────────────────────────
+        # ── 3. NIGHT / OFF-PEAK TARIFF (with smart PV transition) ─────────────
         if self._tariff_enabled and is_offpeak and self.night_charging_enabled:
-            self._reset_pv_counters()
-            if vehicle_soc < self.user_soc_target:
-                if self.charging_mode != CHARGING_MODE_NIGHT:
+            voltage   = data.get("wallbox_voltage_v", 230.0)
+            surplus_a = self._w_to_a(self.pv_surplus_w + self.allowed_import_w, voltage)
+
+            if vehicle_soc >= self.user_soc_target:
+                # SOC target reached → stop regardless of mode
+                if self.charging_mode in (CHARGING_MODE_NIGHT, CHARGING_MODE_PV_SURPLUS):
                     _LOGGER.info(
-                        "[SuperSmart] Off-peak tariff – starting night charging (target %.0f%%)",
+                        "[SuperSmart] F3: SOC %.0f%% reached user target – stopping",
+                        vehicle_soc,
+                    )
+                    await self._revoke()
+                    self.charging_mode = CHARGING_MODE_IDLE
+                    self.solar_controller_active = False
+                    self._reset_pv_counters()
+                self.async_update_listeners()
+                return
+
+            # SOC below user target – decide NIGHT vs PV_SURPLUS.
+            # Mirrors original automation skip_in_f3 logic:
+            # if F3 + soc < limite + surplus < 7A → use grid (night)
+            # if F3 + soc < limite + surplus >= 7A → prefer solar
+            pv_sufficient = surplus_a >= DEFAULT_PV_START_CURRENT_A  # 7A
+
+            if pv_sufficient:
+                # ── Enough PV even in F3 → use/switch to solar mode ───────────
+                if self.charging_mode == CHARGING_MODE_NIGHT:
+                    # Transition NIGHT → PV_SURPLUS
+                    _LOGGER.info(
+                        "[SuperSmart] F3: PV surplus %.1fA >= %.0fA – switching NIGHT → PV_SURPLUS",
+                        surplus_a, DEFAULT_PV_START_CURRENT_A,
+                    )
+                    await self._revoke()
+                    self._reset_pv_counters()
+                    self.charging_mode = CHARGING_MODE_IDLE
+                    self.solar_controller_active = False
+                    # Will restart as PV_SURPLUS on next cycle
+                    self.async_update_listeners()
+                    return
+
+                if self.charging_mode == CHARGING_MODE_PV_SURPLUS:
+                    # Already in solar mode – apply stop hysteresis
+                    if surplus_a < DEFAULT_PV_STOP_CURRENT_A:
+                        self._pv_below_stop_cycles += 1
+                        self._pv_above_start_cycles = 0
+                        _LOGGER.debug(
+                            "[SuperSmart] F3/PV: surplus %.1fA below stop – cycle %d/%d",
+                            surplus_a, self._pv_below_stop_cycles, DEFAULT_PV_STOP_CONFIRM_CYCLES,
+                        )
+                        if self._pv_below_stop_cycles >= DEFAULT_PV_STOP_CONFIRM_CYCLES:
+                            _LOGGER.info(
+                                "[SuperSmart] F3/PV: surplus confirmed low – reverting to NIGHT"
+                            )
+                            await self._set_mode(self._payload_pause)
+                            await self._revoke()
+                            self.charging_mode = CHARGING_MODE_IDLE
+                            self.solar_controller_active = False
+                            self._reset_pv_counters()
+                    else:
+                        self._pv_below_stop_cycles = 0
+                        capped_a = min(surplus_a, await self._load_balanced_current(data))
+                        await self._send_limit_if_changed(capped_a)
+                else:
+                    # IDLE → start solar charging in F3
+                    self._pv_above_start_cycles += 1
+                    if self._pv_above_start_cycles >= DEFAULT_PV_START_CONFIRM_CYCLES:
+                        _LOGGER.info(
+                            "[SuperSmart] F3: PV surplus stable – starting solar charging"
+                        )
+                        await self._set_mode(self._payload_solar)
+                        capped_a = min(surplus_a, await self._load_balanced_current(data))
+                        await self._send_limit(capped_a)
+                        await self._authorize()
+                        self.charging_mode = CHARGING_MODE_PV_SURPLUS
+                        self.solar_controller_active = True
+                        self._reset_pv_counters()
+
+            else:
+                # ── Not enough PV → use night/grid charging ────────────────────
+                self._reset_pv_counters()
+                if self.charging_mode == CHARGING_MODE_PV_SURPLUS:
+                    # Transition PV_SURPLUS → NIGHT (surplus dropped while in F3)
+                    _LOGGER.info(
+                        "[SuperSmart] F3: PV surplus %.1fA < %.0fA – switching PV_SURPLUS → NIGHT",
+                        surplus_a, DEFAULT_PV_START_CURRENT_A,
+                    )
+                    self.solar_controller_active = False
+                    self.charging_mode = CHARGING_MODE_NIGHT
+                    await self._set_mode(self._payload_normal)
+                    night_a = min(
+                        self._w_to_a(self.night_power_limit_w, voltage),
+                        await self._load_balanced_current(data),
+                    )
+                    await self._send_limit(night_a)
+
+                elif self.charging_mode != CHARGING_MODE_NIGHT:
+                    _LOGGER.info(
+                        "[SuperSmart] F3: starting night charging (target %.0f%%)",
                         self.user_soc_target,
                     )
                     await self._set_mode(self._payload_normal)
                     night_a = min(
-                        self._w_to_a(self.night_power_limit_w, data.get("wallbox_voltage_v", 230.0)),
+                        self._w_to_a(self.night_power_limit_w, voltage),
                         await self._load_balanced_current(data),
                     )
                     await self._send_limit(night_a)
                     await self._authorize()
                     self.charging_mode = CHARGING_MODE_NIGHT
                     self.solar_controller_active = False
+
                 else:
+                    # Ongoing night charging – maintain load-balanced limit
                     night_a = min(
-                        self._w_to_a(self.night_power_limit_w, data.get("wallbox_voltage_v", 230.0)),
+                        self._w_to_a(self.night_power_limit_w, voltage),
                         await self._load_balanced_current(data),
                     )
                     await self._send_limit_if_changed(night_a)
-            else:
-                if self.charging_mode == CHARGING_MODE_NIGHT:
-                    _LOGGER.info("[SuperSmart] Night charging complete (SOC %.0f%%) – stopping", vehicle_soc)
-                    await self._revoke()
-                    self.charging_mode = CHARGING_MODE_IDLE
+
             self.async_update_listeners()
             return
+
 
         # ── 4. PV SURPLUS CHARGING (with hysteresis) ──────────────────────────
         voltage   = data.get("wallbox_voltage_v", 230.0)
