@@ -3,6 +3,11 @@
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/hacs/integration)
 [![HA Version](https://img.shields.io/badge/Home%20Assistant-2024.1%2B-blue.svg)](https://www.home-assistant.io/)
 
+
+## Complete automation flow
+
+![EV Energy Manager flow diagram](assets/ev_energy_manager_flow_en.svg)
+
 > A generic HACS integration for smart EV charging.  
 > Compatible with any electric vehicle, any MQTT-capable wallbox, and any solar PV system.
 
