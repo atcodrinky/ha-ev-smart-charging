@@ -8,17 +8,16 @@
   <style>
     text { font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; fill: #1a1a1a; }
     .th  { font-size: 14px; font-weight: 500; }
-    .ts  { font-size: 12px; font-weight: 400; fill: #444; }
+    .ts  { font-size: 12px; font-weight: 400; }
     .arr { stroke: #888; stroke-width: 1.2; fill: none; }
     .leader { stroke: #aaa; stroke-width: 0.5; stroke-dasharray: 3 3; fill: none; }
-    @media (prefers-color-scheme: dark) {
-      text   { fill: #e8e6de; }
       .ts    { fill: #b0ae9f; }
       .arr   { stroke: #666; }
       .leader { stroke: #555; }
     }
   </style>
 </defs>
+<rect width="680" height="1420" fill="#ffffff"/>
 
 <!-- ════════════════ START ════════════════ -->
 <rect x="215" y="20" width="250" height="44" rx="22" fill="#5DCAA5" stroke="#0F6E56" stroke-width="0.5"/>
@@ -29,17 +28,17 @@
 <!-- ════════════════ DECISION 1: MASTER STOP ════════════════ -->
 <rect x="210" y="100" width="260" height="52" rx="8" fill="#B5D4F4" stroke="#185FA5" stroke-width="0.5"/>
 <text class="th" x="340" y="120" text-anchor="middle" dominant-baseline="central" fill="#0C447C">Master Stop attivo?</text>
-<text class="ts" x="340" y="140" text-anchor="middle" dominant-baseline="central" fill="#185FA5">priorità assoluta</text>
+<text class="ts" x="340" y="140" text-anchor="middle" dominant-baseline="central" fill="#1a1a1a">priorità assoluta</text>
 
 <!-- YES left -->
 <line x1="210" y1="126" x2="150" y2="126" class="arr" marker-end="url(#arrow)"/>
-<text class="ts" x="208" y="118" text-anchor="end">sì</text>
+<text class="ts" x="208" y="118" text-anchor="end" fill="#444441">sì</text>
 
 <!-- MASTER STOP block -->
 <rect x="20" y="100" width="130" height="80" rx="8" fill="#F7C1C1" stroke="#A32D2D" stroke-width="0.5"/>
 <text class="th" x="85" y="124" text-anchor="middle" dominant-baseline="central" fill="#791F1F">Master Stop</text>
-<text class="ts" x="85" y="146" text-anchor="middle" dominant-baseline="central" fill="#A32D2D">Set mode 3 (pausa)</text>
-<text class="ts" x="85" y="164" text-anchor="middle" dominant-baseline="central" fill="#A32D2D">Revoca autorizzazione</text>
+<text class="ts" x="85" y="146" text-anchor="middle" dominant-baseline="central" fill="#1a1a1a">Set mode 3 (pausa)</text>
+<text class="ts" x="85" y="164" text-anchor="middle" dominant-baseline="central" fill="#1a1a1a">Revoca autorizzazione</text>
 
 <line x1="85" y1="180" x2="85" y2="208" class="arr" marker-end="url(#arrow)"/>
 <rect x="20" y="208" width="130" height="34" rx="6" fill="#D3D1C7" stroke="#888780" stroke-width="0.5"/>
@@ -47,22 +46,22 @@
 
 <!-- NO down -->
 <line x1="340" y1="152" x2="340" y2="188" class="arr" marker-end="url(#arrow)"/>
-<text class="ts" x="350" y="174">no</text>
+<text class="ts" x="350" y="174" fill="#444441">no</text>
 
 <!-- ════════════════ DECISION 2: FORZA ════════════════ -->
 <rect x="210" y="188" width="260" height="52" rx="8" fill="#B5D4F4" stroke="#185FA5" stroke-width="0.5"/>
 <text class="th" x="340" y="208" text-anchor="middle" dominant-baseline="central" fill="#0C447C">Forza Ricarica attiva?</text>
-<text class="ts" x="340" y="228" text-anchor="middle" dominant-baseline="central" fill="#185FA5">ignora tariffe e FV</text>
+<text class="ts" x="340" y="228" text-anchor="middle" dominant-baseline="central" fill="#1a1a1a">ignora tariffe e FV</text>
 
 <!-- YES right -->
 <line x1="470" y1="214" x2="570" y2="214" class="arr" marker-end="url(#arrow)"/>
-<text class="ts" x="478" y="207">sì</text>
+<text class="ts" x="478" y="207" fill="#444441">sì</text>
 
 <!-- FORZA block -->
 <rect x="570" y="188" width="96" height="80" rx="8" fill="#FAC775" stroke="#BA7517" stroke-width="0.5"/>
 <text class="th" x="618" y="212" text-anchor="middle" dominant-baseline="central" fill="#633806">Forza</text>
-<text class="ts" x="618" y="230" text-anchor="middle" dominant-baseline="central" fill="#854F0B">Mode Normal</text>
-<text class="ts" x="618" y="248" text-anchor="middle" dominant-baseline="central" fill="#854F0B">≤ contratto</text>
+<text class="ts" x="618" y="230" text-anchor="middle" dominant-baseline="central" fill="#1a1a1a">Mode Normal</text>
+<text class="ts" x="618" y="248" text-anchor="middle" dominant-baseline="central" fill="#1a1a1a">≤ contratto</text>
 
 <line x1="618" y1="268" x2="618" y2="296" class="arr" marker-end="url(#arrow)"/>
 <rect x="570" y="296" width="96" height="52" rx="6" fill="#D3D1C7" stroke="#888780" stroke-width="0.5"/>
@@ -73,22 +72,22 @@
 
 <!-- NO down -->
 <line x1="340" y1="240" x2="340" y2="276" class="arr" marker-end="url(#arrow)"/>
-<text class="ts" x="350" y="262">no</text>
+<text class="ts" x="350" y="262" fill="#444441">no</text>
 
 <!-- ════════════════ DECISION 3: NOTTE F3 ════════════════ -->
 <rect x="200" y="276" width="280" height="52" rx="8" fill="#B5D4F4" stroke="#185FA5" stroke-width="0.5"/>
 <text class="th" x="340" y="296" text-anchor="middle" dominant-baseline="central" fill="#0C447C">Tariffa F3 + notte?</text>
-<text class="ts" x="340" y="316" text-anchor="middle" dominant-baseline="central" fill="#185FA5">sole sotto + forza OFF + SOC &lt; user target</text>
+<text class="ts" x="340" y="316" text-anchor="middle" dominant-baseline="central" fill="#1a1a1a">sole sotto + forza OFF + SOC &lt; user target</text>
 
 <!-- YES right connector -->
 <path d="M480 302 L618 302 L618 370" fill="none" stroke="#888" stroke-width="1.2" marker-end="url(#arrow)"/>
-<text class="ts" x="488" y="295">sì</text>
+<text class="ts" x="488" y="295" fill="#444441">sì</text>
 
 <!-- NOTTE block -->
 <rect x="570" y="370" width="96" height="80" rx="8" fill="#CECBF6" stroke="#534AB7" stroke-width="0.5"/>
 <text class="th" x="618" y="394" text-anchor="middle" dominant-baseline="central" fill="#26215C">Notte F3</text>
-<text class="ts" x="618" y="412" text-anchor="middle" dominant-baseline="central" fill="#534AB7">Mode Normal</text>
-<text class="ts" x="618" y="430" text-anchor="middle" dominant-baseline="central" fill="#534AB7">≤ limite notturno</text>
+<text class="ts" x="618" y="412" text-anchor="middle" dominant-baseline="central" fill="#1a1a1a">Mode Normal</text>
+<text class="ts" x="618" y="430" text-anchor="middle" dominant-baseline="central" fill="#1a1a1a">≤ limite notturno</text>
 
 <line x1="618" y1="450" x2="618" y2="478" class="arr" marker-end="url(#arrow)"/>
 <rect x="570" y="478" width="96" height="48" rx="8" fill="#B5D4F4" stroke="#185FA5" stroke-width="0.5"/>
@@ -96,10 +95,10 @@
 <text class="th" x="618" y="515" text-anchor="middle" dominant-baseline="central" fill="#0C447C">user target?</text>
 
 <path d="M570 502 L540 502 L540 410 L570 410" fill="none" stroke="#aaa" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
-<text class="ts" x="535" y="458" text-anchor="end">no</text>
+<text class="ts" x="535" y="458" text-anchor="end" fill="#444441">no</text>
 
 <line x1="618" y1="526" x2="618" y2="556" class="arr" marker-end="url(#arrow)"/>
-<text class="ts" x="628" y="544">sì</text>
+<text class="ts" x="628" y="544" fill="#444441">sì</text>
 <rect x="570" y="556" width="96" height="52" rx="6" fill="#D3D1C7" stroke="#888780" stroke-width="0.5"/>
 <text class="th" x="618" y="571" text-anchor="middle" dominant-baseline="central" fill="#2C2C2A">STOP</text>
 <text class="ts" x="618" y="587" text-anchor="middle" dominant-baseline="central" fill="#5F5E5A">user target</text>
@@ -107,22 +106,22 @@
 
 <!-- NO down -->
 <line x1="340" y1="328" x2="340" y2="364" class="arr" marker-end="url(#arrow)"/>
-<text class="ts" x="350" y="350">no</text>
+<text class="ts" x="350" y="350" fill="#444441">no</text>
 
 <!-- ════════════════ DECISION 4: SURPLUS FV ════════════════ -->
 <rect x="190" y="364" width="300" height="52" rx="8" fill="#B5D4F4" stroke="#185FA5" stroke-width="0.5"/>
 <text class="th" x="340" y="384" text-anchor="middle" dominant-baseline="central" fill="#0C447C">Surplus FV disponibile?</text>
-<text class="ts" x="340" y="404" text-anchor="middle" dominant-baseline="central" fill="#185FA5">amp ≥ 7A per 30s + SOC &lt; vehicle target</text>
+<text class="ts" x="340" y="404" text-anchor="middle" dominant-baseline="central" fill="#1a1a1a">amp ≥ 7A per 30s + SOC &lt; vehicle target</text>
 
 <!-- YES left -->
 <line x1="190" y1="390" x2="110" y2="390" class="arr" marker-end="url(#arrow)"/>
-<text class="ts" x="182" y="382">sì</text>
+<text class="ts" x="182" y="382" fill="#444441">sì</text>
 
 <!-- SURPLUS FV block -->
 <rect x="20" y="364" width="90" height="80" rx="8" fill="#5DCAA5" stroke="#0F6E56" stroke-width="0.5"/>
 <text class="th" x="65" y="388" text-anchor="middle" dominant-baseline="central" fill="#04342C">Surplus FV</text>
-<text class="ts" x="65" y="406" text-anchor="middle" dominant-baseline="central" fill="#085041">Mode Solar</text>
-<text class="ts" x="65" y="424" text-anchor="middle" dominant-baseline="central" fill="#085041">modula amp</text>
+<text class="ts" x="65" y="406" text-anchor="middle" dominant-baseline="central" fill="#1a1a1a">Mode Solar</text>
+<text class="ts" x="65" y="424" text-anchor="middle" dominant-baseline="central" fill="#1a1a1a">modula amp</text>
 
 <line x1="65" y1="444" x2="65" y2="472" class="arr" marker-end="url(#arrow)"/>
 <rect x="20" y="472" width="90" height="48" rx="8" fill="#B5D4F4" stroke="#185FA5" stroke-width="0.5"/>
@@ -130,10 +129,10 @@
 <text class="th" x="65" y="509" text-anchor="middle" dominant-baseline="central" fill="#0C447C">per 60s?</text>
 
 <path d="M110 496 L140 496 L140 404 L110 404" fill="none" stroke="#aaa" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
-<text class="ts" x="148" y="454">no</text>
+<text class="ts" x="148" y="454" fill="#444441">no</text>
 
 <line x1="65" y1="520" x2="65" y2="552" class="arr" marker-end="url(#arrow)"/>
-<text class="ts" x="75" y="538">sì</text>
+<text class="ts" x="75" y="538" fill="#444441">sì</text>
 <rect x="20" y="552" width="90" height="52" rx="6" fill="#D3D1C7" stroke="#888780" stroke-width="0.5"/>
 <text class="th" x="65" y="567" text-anchor="middle" dominant-baseline="central" fill="#2C2C2A">STOP</text>
 <text class="ts" x="65" y="583" text-anchor="middle" dominant-baseline="central" fill="#5F5E5A">vehicle target</text>
@@ -141,7 +140,7 @@
 
 <!-- NO → IDLE -->
 <line x1="340" y1="416" x2="340" y2="452" class="arr" marker-end="url(#arrow)"/>
-<text class="ts" x="350" y="438">no</text>
+<text class="ts" x="350" y="438" fill="#444441">no</text>
 
 <!-- IDLE -->
 <rect x="220" y="452" width="240" height="44" rx="22" fill="#D3D1C7" stroke="#888780" stroke-width="0.5"/>
@@ -149,61 +148,61 @@
 
 <!-- ════════════════ SEZIONE BILANCIAMENTO ════════════════ -->
 <line x1="40" y1="615" x2="640" y2="615" stroke="#ccc" stroke-width="0.5" stroke-dasharray="4 3"/>
-<text class="th" x="340" y="638" text-anchor="middle">Bilanciamento dinamico carichi</text>
-<text class="ts" x="340" y="656" text-anchor="middle">attivo durante la ricarica</text>
+<text class="th" x="340" y="638" text-anchor="middle" fill="#1a1a1a">Bilanciamento dinamico carichi</text>
+<text class="ts" x="340" y="656" text-anchor="middle" fill="#444441">attivo durante la ricarica</text>
 
 <rect x="20"  y="670" width="148" height="138" rx="8" fill="#9FE1CB" stroke="#0F6E56" stroke-width="0.5"/>
 <text class="th" x="94"  y="693" text-anchor="middle" dominant-baseline="central" fill="#04342C">Sensori input</text>
-<text class="ts" x="94"  y="712" text-anchor="middle" fill="#085041">FV produzione (W)</text>
-<text class="ts" x="94"  y="730" text-anchor="middle" fill="#085041">Rete import/export (W)</text>
-<text class="ts" x="94"  y="748" text-anchor="middle" fill="#085041">Potenza wallbox (W)</text>
-<text class="ts" x="94"  y="766" text-anchor="middle" fill="#085041">Tensione (V)</text>
-<text class="ts" x="94"  y="784" text-anchor="middle" fill="#085041">Limite contratto (W)</text>
+<text class="ts" x="94"  y="712" text-anchor="middle" fill="#1a1a1a">FV produzione (W)</text>
+<text class="ts" x="94"  y="730" text-anchor="middle" fill="#1a1a1a">Rete import/export (W)</text>
+<text class="ts" x="94"  y="748" text-anchor="middle" fill="#1a1a1a">Potenza wallbox (W)</text>
+<text class="ts" x="94"  y="766" text-anchor="middle" fill="#1a1a1a">Tensione (V)</text>
+<text class="ts" x="94"  y="784" text-anchor="middle" fill="#1a1a1a">Limite contratto (W)</text>
 
 <line x1="168" y1="739" x2="196" y2="739" class="arr" marker-end="url(#arrow)"/>
 
 <rect x="196" y="670" width="130" height="138" rx="8" fill="#CECBF6" stroke="#534AB7" stroke-width="0.5"/>
 <text class="th" x="261" y="693" text-anchor="middle" dominant-baseline="central" fill="#26215C">Surplus FV</text>
-<text class="ts" x="261" y="716" text-anchor="middle" fill="#534AB7">amp_fv =</text>
-<text class="ts" x="261" y="734" text-anchor="middle" fill="#534AB7">(-rete + offset)</text>
-<text class="ts" x="261" y="752" text-anchor="middle" fill="#534AB7">÷ tensione</text>
-<text class="ts" x="261" y="774" text-anchor="middle" fill="#534AB7">min 6A</text>
+<text class="ts" x="261" y="716" text-anchor="middle" fill="#1a1a1a">amp_fv =</text>
+<text class="ts" x="261" y="734" text-anchor="middle" fill="#1a1a1a">(-rete + offset)</text>
+<text class="ts" x="261" y="752" text-anchor="middle" fill="#1a1a1a">÷ tensione</text>
+<text class="ts" x="261" y="774" text-anchor="middle" fill="#1a1a1a">min 6A</text>
 
 <line x1="326" y1="739" x2="354" y2="739" class="arr" marker-end="url(#arrow)"/>
 
 <rect x="354" y="670" width="148" height="138" rx="8" fill="#FAC775" stroke="#BA7517" stroke-width="0.5"/>
 <text class="th" x="428" y="693" text-anchor="middle" dominant-baseline="central" fill="#412402">Bilanciamento</text>
-<text class="ts" x="428" y="712" text-anchor="middle" fill="#854F0B">tot = rete + FV</text>
-<text class="ts" x="428" y="730" text-anchor="middle" fill="#854F0B">casa = tot - wallbox</text>
-<text class="ts" x="428" y="750" text-anchor="middle" fill="#854F0B">margine =</text>
-<text class="ts" x="428" y="768" text-anchor="middle" fill="#854F0B">limite - casa</text>
-<text class="ts" x="428" y="786" text-anchor="middle" fill="#854F0B">amp = margine ÷ V</text>
+<text class="ts" x="428" y="712" text-anchor="middle" fill="#1a1a1a">tot = rete + FV</text>
+<text class="ts" x="428" y="730" text-anchor="middle" fill="#1a1a1a">casa = tot - wallbox</text>
+<text class="ts" x="428" y="750" text-anchor="middle" fill="#1a1a1a">margine =</text>
+<text class="ts" x="428" y="768" text-anchor="middle" fill="#1a1a1a">limite - casa</text>
+<text class="ts" x="428" y="786" text-anchor="middle" fill="#1a1a1a">amp = margine ÷ V</text>
 
 <line x1="502" y1="739" x2="520" y2="739" class="arr" marker-end="url(#arrow)"/>
 
 <rect x="520" y="670" width="140" height="138" rx="8" fill="#F5C4B3" stroke="#993C1D" stroke-width="0.5"/>
 <text class="th" x="590" y="693" text-anchor="middle" dominant-baseline="central" fill="#4A1B0C">Ampere → WB</text>
-<text class="ts" x="590" y="712" text-anchor="middle" fill="#993C1D">min(amp_fv,</text>
-<text class="ts" x="590" y="730" text-anchor="middle" fill="#993C1D">amp_contratto)</text>
-<text class="ts" x="590" y="750" text-anchor="middle" fill="#993C1D">clamped 6–25A</text>
-<text class="ts" x="590" y="770" text-anchor="middle" fill="#993C1D">Δ ≥ 0.5A prima</text>
-<text class="ts" x="590" y="788" text-anchor="middle" fill="#993C1D">di inviare</text>
+<text class="ts" x="590" y="712" text-anchor="middle" fill="#1a1a1a">min(amp_fv,</text>
+<text class="ts" x="590" y="730" text-anchor="middle" fill="#1a1a1a">amp_contratto)</text>
+<text class="ts" x="590" y="750" text-anchor="middle" fill="#1a1a1a">clamped 6–25A</text>
+<text class="ts" x="590" y="770" text-anchor="middle" fill="#1a1a1a">Δ ≥ 0.5A prima</text>
+<text class="ts" x="590" y="788" text-anchor="middle" fill="#1a1a1a">di inviare</text>
 
 <!-- ════════════════ TARGET SOC ════════════════ -->
 <line x1="40" y1="830" x2="640" y2="830" stroke="#ccc" stroke-width="0.5" stroke-dasharray="4 3"/>
-<text class="th" x="340" y="858" text-anchor="middle">Target SOC</text>
+<text class="th" x="340" y="858" text-anchor="middle" fill="#1a1a1a">Target SOC</text>
 
 <rect x="20"  y="872" width="294" height="58" rx="8" fill="#FAC775" stroke="#BA7517" stroke-width="0.5"/>
 <text class="th" x="167" y="893" text-anchor="middle" dominant-baseline="central" fill="#412402">User target</text>
-<text class="ts" x="167" y="913" text-anchor="middle" fill="#854F0B">limite_batteria_manuale → ricarica Notte F3</text>
+<text class="ts" x="167" y="913" text-anchor="middle" fill="#1a1a1a">limite_batteria_manuale → ricarica Notte F3</text>
 
 <rect x="330" y="872" width="330" height="58" rx="8" fill="#9FE1CB" stroke="#0F6E56" stroke-width="0.5"/>
 <text class="th" x="495" y="893" text-anchor="middle" dominant-baseline="central" fill="#04342C">Vehicle target</text>
-<text class="ts" x="495" y="913" text-anchor="middle" fill="#085041">limite_batteria_auto → Surplus FV e Forza</text>
+<text class="ts" x="495" y="913" text-anchor="middle" fill="#1a1a1a">limite_batteria_auto → Surplus FV e Forza</text>
 
 <!-- ════════════════ PRIORITÀ MODALITÀ ════════════════ -->
 <line x1="40" y1="952" x2="640" y2="952" stroke="#ccc" stroke-width="0.5" stroke-dasharray="4 3"/>
-<text class="th" x="340" y="978" text-anchor="middle">Priorità modalità</text>
+<text class="th" x="340" y="978" text-anchor="middle" fill="#1a1a1a">Priorità modalità</text>
 
 <rect x="20"  y="993" width="120" height="34" rx="6" fill="#F7C1C1" stroke="#A32D2D" stroke-width="0.5"/>
 <text class="th" x="80"  y="1010" text-anchor="middle" dominant-baseline="central" fill="#791F1F">1. Master Stop</text>
@@ -219,42 +218,42 @@
 <!-- ════════════════ SICUREZZE + ENTITÀ ════════════════ -->
 <line x1="40" y1="1048" x2="640" y2="1048" stroke="#ccc" stroke-width="0.5" stroke-dasharray="4 3"/>
 
-<text class="th" x="170" y="1074" text-anchor="middle">Sicurezze</text>
-<text class="th" x="500" y="1074" text-anchor="middle">Entità configurabili</text>
+<text class="th" x="170" y="1074" text-anchor="middle" fill="#1a1a1a">Sicurezze</text>
+<text class="th" x="500" y="1074" text-anchor="middle" fill="#1a1a1a">Entità configurabili</text>
 
 <rect x="20"  y="1088" width="300" height="128" rx="8" fill="#EAF3DE" stroke="#3B6D11" stroke-width="0.5"/>
-<text class="ts" x="38" y="1114" fill="#27500A">✓  Rispetta limite contrattuale</text>
-<text class="ts" x="38" y="1134" fill="#27500A">✓  Import rete configurabile (offset W)</text>
-<text class="ts" x="38" y="1154" fill="#27500A">✓  Stop automatico a target SOC</text>
-<text class="ts" x="38" y="1174" fill="#27500A">✓  Revoca immediata con Master Stop</text>
-<text class="ts" x="38" y="1194" fill="#27500A">✓  Corrente minima 6A · massima 25A</text>
+<text class="ts" x="38" y="1114" fill="#1a1a1a">✓  Rispetta limite contrattuale</text>
+<text class="ts" x="38" y="1134" fill="#1a1a1a">✓  Import rete configurabile (offset W)</text>
+<text class="ts" x="38" y="1154" fill="#1a1a1a">✓  Stop automatico a target SOC</text>
+<text class="ts" x="38" y="1174" fill="#1a1a1a">✓  Revoca immediata con Master Stop</text>
+<text class="ts" x="38" y="1194" fill="#1a1a1a">✓  Corrente minima 6A · massima 25A</text>
 
 <rect x="340" y="1088" width="300" height="128" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
-<text class="ts" x="358" y="1114" fill="#0C447C">number: user / vehicle SOC target</text>
-<text class="ts" x="358" y="1134" fill="#0C447C">number: potenza contratto (W)</text>
-<text class="ts" x="358" y="1154" fill="#0C447C">number: limite notturno (W)</text>
-<text class="ts" x="358" y="1174" fill="#0C447C">number: import permesso (offset W)</text>
-<text class="ts" x="358" y="1194" fill="#0C447C">switch: master stop / forza / notte</text>
+<text class="ts" x="358" y="1114" fill="#1a1a1a">number: user / vehicle SOC target</text>
+<text class="ts" x="358" y="1134" fill="#1a1a1a">number: potenza contratto (W)</text>
+<text class="ts" x="358" y="1154" fill="#1a1a1a">number: limite notturno (W)</text>
+<text class="ts" x="358" y="1174" fill="#1a1a1a">number: import permesso (offset W)</text>
+<text class="ts" x="358" y="1194" fill="#1a1a1a">switch: master stop / forza / notte</text>
 
 <!-- ════════════════ LEGENDA + VERSIONE ════════════════ -->
 <line x1="40" y1="1238" x2="640" y2="1238" stroke="#ccc" stroke-width="0.5" stroke-dasharray="4 3"/>
 
-<text class="ts" x="340" y="1262" text-anchor="middle">Legenda colori</text>
+<text class="ts" x="340" y="1262" text-anchor="middle" fill="#444441">Legenda colori</text>
 
 <rect x="40"  y="1278" width="14" height="14" rx="3" fill="#5DCAA5"/>
-<text class="ts" x="60"  y="1285" dominant-baseline="central">Stato / start / stop</text>
+<text class="ts" x="60"  y="1285" dominant-baseline="central" fill="#444441">Stato / start / stop</text>
 <rect x="168" y="1278" width="14" height="14" rx="3" fill="#85B7EB"/>
-<text class="ts" x="188" y="1285" dominant-baseline="central">Decisione</text>
+<text class="ts" x="188" y="1285" dominant-baseline="central" fill="#444441">Decisione</text>
 <rect x="274" y="1278" width="14" height="14" rx="3" fill="#EF9F27"/>
-<text class="ts" x="294" y="1285" dominant-baseline="central">Forza</text>
+<text class="ts" x="294" y="1285" dominant-baseline="central" fill="#444441">Forza</text>
 <rect x="352" y="1278" width="14" height="14" rx="3" fill="#AFA9EC"/>
-<text class="ts" x="372" y="1285" dominant-baseline="central">Notte F3</text>
+<text class="ts" x="372" y="1285" dominant-baseline="central" fill="#444441">Notte F3</text>
 <rect x="448" y="1278" width="14" height="14" rx="3" fill="#1D9E75"/>
-<text class="ts" x="468" y="1285" dominant-baseline="central">Surplus FV</text>
+<text class="ts" x="468" y="1285" dominant-baseline="central" fill="#444441">Surplus FV</text>
 <rect x="556" y="1278" width="14" height="14" rx="3" fill="#F09595"/>
-<text class="ts" x="576" y="1285" dominant-baseline="central">Stop</text>
+<text class="ts" x="576" y="1285" dominant-baseline="central" fill="#444441">Stop</text>
 
-<text class="ts" x="340" y="1340" text-anchor="middle" fill="#888">v1.3.0 – github.com/atcodrinky/ha-supersmart-ev-charging</text>
-<text class="ts" x="340" y="1360" text-anchor="middle" fill="#888">SuperSmart EV Charging – HACS Integration</text>
+<text class="ts" x="340" y="1340" text-anchor="middle" fill="#666">v1.3.0 – github.com/atcodrinky/ha-supersmart-ev-charging</text>
+<text class="ts" x="340" y="1360" text-anchor="middle" fill="#666">SuperSmart EV Charging – HACS Integration</text>
 
 </svg>
