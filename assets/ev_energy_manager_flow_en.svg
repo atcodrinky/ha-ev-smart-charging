@@ -240,20 +240,20 @@
 
 <text class="ts" x="340" y="1262" text-anchor="middle" fill="#1a1a1a">Colour legend</text>
 
-<rect x="40"  y="1278" width="14" height="14" rx="3" fill="#5DCAA5"/>
-<text class="ts" x="60"  y="1285" dominant-baseline="central" fill="#1a1a1a">State / start / stop</text>
-<rect x="168" y="1278" width="14" height="14" rx="3" fill="#85B7EB"/>
-<text class="ts" x="188" y="1285" dominant-baseline="central" fill="#1a1a1a">Decision</text>
-<rect x="274" y="1278" width="14" height="14" rx="3" fill="#EF9F27"/>
-<text class="ts" x="294" y="1285" dominant-baseline="central" fill="#1a1a1a">Force</text>
-<rect x="352" y="1278" width="14" height="14" rx="3" fill="#AFA9EC"/>
-<text class="ts" x="372" y="1285" dominant-baseline="central" fill="#1a1a1a">Night F3</text>
-<rect x="448" y="1278" width="14" height="14" rx="3" fill="#1D9E75"/>
-<text class="ts" x="468" y="1285" dominant-baseline="central" fill="#1a1a1a">PV Surplus</text>
-<rect x="556" y="1278" width="14" height="14" rx="3" fill="#F09595"/>
-<text class="ts" x="576" y="1285" dominant-baseline="central" fill="#1a1a1a">Stop</text>
+<rect x="68"  y="1278" width="14" height="14" rx="3" fill="#5DCAA5"/>
+<text class="ts" x="88" y="1285" dominant-baseline="central" fill="#1a1a1a">State / start / stop</text>
+<rect x="234" y="1278" width="14" height="14" rx="3" fill="#85B7EB"/>
+<text class="ts" x="254" y="1285" dominant-baseline="central" fill="#1a1a1a">Decision</text>
+<rect x="335" y="1278" width="14" height="14" rx="3" fill="#EF9F27"/>
+<text class="ts" x="355" y="1285" dominant-baseline="central" fill="#1a1a1a">Force</text>
+<rect x="406" y="1278" width="14" height="14" rx="3" fill="#AFA9EC"/>
+<text class="ts" x="426" y="1285" dominant-baseline="central" fill="#1a1a1a">Night F3</text>
+<rect x="497" y="1278" width="14" height="14" rx="3" fill="#1D9E75"/>
+<text class="ts" x="517" y="1285" dominant-baseline="central" fill="#1a1a1a">PV Surplus</text>
+<rect x="598" y="1278" width="14" height="14" rx="3" fill="#F09595"/>
+<text class="ts" x="618" y="1285" dominant-baseline="central" fill="#1a1a1a">Stop</text>
 
-<text class="ts" x="340" y="1340" text-anchor="middle" fill="#1a1a1a">v1.3.0 – github.com/atcodrinky/ha-supersmart-ev-charging</text>
+<text class="ts" x="340" y="1340" text-anchor="middle" fill="#1a1a1a">v1.3.0-beta – github.com/atcodrinky/ha-supersmart-ev-charging</text>
 <text class="ts" x="340" y="1360" text-anchor="middle" fill="#1a1a1a">SuperSmart EV Charging – HACS Integration</text>
 
 </svg>
