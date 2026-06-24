@@ -1,4 +1,4 @@
-"""Coordinator for SuperSmart EV Charging"""
+"""Coordinator for SuperSmart EV Charging – core smart charging logic."""
 from __future__ import annotations
 
 import logging
@@ -108,12 +108,13 @@ class SuperSmartEvChargingCoordinator(DataUpdateCoordinator):
         self._battery_capacity_kwh: float = d.get(CONF_BATTERY_CAPACITY_KWH, DEFAULT_BATTERY_CAPACITY_KWH)
 
         # ── Controllable state (exposed as HA entities)
+        # SOC targets seeded from config entry so first run uses user-chosen values
         self.master_stop: bool             = False
         self.force_charge: bool            = False
         self.solar_controller_active: bool = False
         self.night_charging_enabled: bool  = True
-        self.user_soc_target: float        = DEFAULT_USER_SOC_TARGET
-        self.vehicle_soc_target: float     = DEFAULT_VEHICLE_SOC_TARGET
+        self.user_soc_target: float        = float(d.get("initial_user_soc_target",    DEFAULT_USER_SOC_TARGET))
+        self.vehicle_soc_target: float     = float(d.get("initial_vehicle_soc_target", DEFAULT_VEHICLE_SOC_TARGET))
         self.allowed_import_w: float       = DEFAULT_ALLOWED_IMPORT_W
         self.night_power_limit_w: float    = DEFAULT_NIGHT_POWER_LIMIT_W
 
