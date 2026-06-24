@@ -23,6 +23,9 @@ from .const import (
     CONF_WALLBOX_VOLTAGE_ENTITY,
     CONF_GRID_POWER_ENTITY,
     CONF_PV_POWER_ENTITY,
+    CONF_TOTAL_POWER_ENTITY,
+    CONF_BUTTON_AUTHORIZE_ENTITY,
+    CONF_BUTTON_REVOKE_ENTITY,
     CONF_TARIFF_ENTITY,
     CONF_TARIFF_OFFPEAK_VALUE,
     CONF_TARIFF_ENABLED,
@@ -97,8 +100,10 @@ class SuperSmartEvChargingConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             vol.Required(CONF_VEHICLE_SOC_ENTITY): selector.EntitySelector(
                 selector.EntitySelectorConfig(domain="sensor")
             ),
-            vol.Required(CONF_VEHICLE_CONNECTED_ENTITY): selector.EntitySelector(
-                selector.EntitySelectorConfig(domain="binary_sensor")
+            # Per Silla Prism la connessione è derivata da sensor.silla_prism_stato_wallbox
+            # (idle = non connesso). Accetta sia binary_sensor sia sensor.
+            vol.Optional(CONF_VEHICLE_CONNECTED_ENTITY): selector.EntitySelector(
+                selector.EntitySelectorConfig(domain=["binary_sensor", "sensor"])
             ),
             vol.Optional(CONF_VEHICLE_CHARGE_LIMIT_ENTITY): selector.EntitySelector(
                 selector.EntitySelectorConfig(domain=["number", "input_number"])
@@ -106,10 +111,20 @@ class SuperSmartEvChargingConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             vol.Required(CONF_GRID_POWER_ENTITY): selector.EntitySelector(
                 selector.EntitySelectorConfig(domain="sensor")
             ),
+            # sensor.fotovoltaico_power – OBBLIGATORIO.
+            # Usato sia per il calcolo del surplus FV (amp_fv) sia per derivare
+            # potenza_istantanea = rete_power + fotovoltaico_power
             vol.Required(CONF_PV_POWER_ENTITY): selector.EntitySelector(
                 selector.EntitySelectorConfig(domain="sensor")
             ),
-            vol.Optional(CONF_WALLBOX_STATE_ENTITY): selector.EntitySelector(
+            # sensor.potenza_istantanea – OPZIONALE.
+            # Se omesso viene calcolato come rete_power + fotovoltaico_power (stesso risultato).
+            vol.Optional(CONF_TOTAL_POWER_ENTITY): selector.EntitySelector(
+                selector.EntitySelectorConfig(domain="sensor")
+            ),
+            # sensor.silla_prism_stato_wallbox – OBBLIGATORIO.
+            # Valori attesi: idle, waiting, pause, charging
+            vol.Required(CONF_WALLBOX_STATE_ENTITY): selector.EntitySelector(
                 selector.EntitySelectorConfig(domain="sensor")
             ),
             vol.Optional(CONF_WALLBOX_POWER_ENTITY): selector.EntitySelector(
@@ -117,6 +132,14 @@ class SuperSmartEvChargingConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             ),
             vol.Optional(CONF_WALLBOX_VOLTAGE_ENTITY): selector.EntitySelector(
                 selector.EntitySelectorConfig(domain="sensor")
+            ),
+            # button.silla_prism_autorizza_ricarica
+            vol.Optional(CONF_BUTTON_AUTHORIZE_ENTITY): selector.EntitySelector(
+                selector.EntitySelectorConfig(domain="button")
+            ),
+            # button.silla_prism_revoca_autorizzazione_ricarica
+            vol.Optional(CONF_BUTTON_REVOKE_ENTITY): selector.EntitySelector(
+                selector.EntitySelectorConfig(domain="button")
             ),
         }
 
