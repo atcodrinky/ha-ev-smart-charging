@@ -4,37 +4,39 @@
       "user": {
         "title": "SuperSmart EV Charging – Impostazioni generali",
         "data": {
-          "contract_power_w":    "Potenza contratto (W)",
+          "contract_power_w": "Potenza contratto (W)",
           "battery_capacity_kwh": "Capacità batteria veicolo (kWh)",
-          "tariff_enabled":      "Abilita ricarica in fascia off-peak",
-          "mqtt_enabled":        "Abilita controllo wallbox via MQTT"
+          "tariff_enabled": "Abilita ricarica in fascia off-peak",
+          "mqtt_enabled": "Abilita controllo wallbox via MQTT",
+          "initial_user_soc_target": "Target SOC utente – ricarica notturna/manuale (%)",
+          "initial_vehicle_soc_target": "Target SOC veicolo – surplus FV e forza ricarica (%)"
         }
       },
       "entities": {
-        "title": "Selezione entità",
+        "title": "SuperSmart EV Charging – Selezione entità",
         "data": {
-          "vehicle_soc_entity":           "Sensore SOC veicolo (%)",
-          "vehicle_connected_entity":     "Sensore binario cavo collegato",
-          "vehicle_charge_limit_entity":  "Limite di carica veicolo (opzionale)",
-          "grid_power_entity":            "Sensore potenza rete (W)",
-          "pv_power_entity":              "Sensore produzione fotovoltaica (W)",
-          "wallbox_state_entity":         "Sensore stato wallbox (opzionale)",
-          "wallbox_power_entity":         "Sensore potenza wallbox (opzionale)",
-          "wallbox_voltage_entity":       "Sensore tensione wallbox (opzionale)",
-          "tariff_entity":                "Sensore fascia tariffaria (opzionale)",
-          "tariff_offpeak_value":         "Valore fascia off-peak (es. F3, economica)"
+          "vehicle_soc_entity": "Sensore SOC veicolo (%)",
+          "vehicle_connected_entity": "Binary sensor cavo collegato",
+          "vehicle_charge_limit_entity": "Numero limite di carica veicolo (opzionale)",
+          "grid_power_entity": "Sensore potenza rete (W)",
+          "pv_power_entity": "Sensore produzione fotovoltaica (W)",
+          "wallbox_state_entity": "Sensore stato wallbox (opzionale)",
+          "wallbox_power_entity": "Sensore potenza wallbox (opzionale)",
+          "wallbox_voltage_entity": "Sensore tensione wallbox (opzionale)",
+          "tariff_entity": "Sensore fascia tariffaria (opzionale)",
+          "tariff_offpeak_value": "Valore fascia off-peak (es. F3, cheap)"
         }
       },
       "mqtt": {
-        "title": "Configurazione MQTT wallbox",
+        "title": "SuperSmart EV Charging – Configurazione MQTT wallbox",
         "data": {
-          "mqtt_topic_authorize":      "Topic autorizza ricarica",
-          "mqtt_topic_revoke":         "Topic revoca autorizzazione",
-          "mqtt_topic_set_current":    "Topic imposta corrente (A)",
-          "mqtt_topic_set_mode":       "Topic imposta modalità (opzionale)",
-          "mqtt_payload_mode_solar":   "Payload modalità solare",
-          "mqtt_payload_mode_normal":  "Payload modalità normale",
-          "mqtt_payload_mode_pause":   "Payload modalità pausa"
+          "mqtt_topic_authorize": "Topic autorizza ricarica",
+          "mqtt_topic_revoke": "Topic revoca autorizzazione",
+          "mqtt_topic_set_current": "Topic imposta corrente (A)",
+          "mqtt_topic_set_mode": "Topic imposta modalità (opzionale)",
+          "mqtt_payload_mode_solar": "Payload modalità solare",
+          "mqtt_payload_mode_normal": "Payload modalità normale",
+          "mqtt_payload_mode_pause": "Payload modalità pausa"
         }
       }
     },
@@ -42,18 +44,20 @@
       "entity_not_found": "Entità non trovata in Home Assistant"
     },
     "abort": {
-      "already_configured": "Integrazione già configurata"
+      "already_configured": "SuperSmart EV Charging già configurato"
     }
   },
   "options": {
     "step": {
       "init": {
-        "title": "Opzioni",
+        "title": "SuperSmart EV Charging – Opzioni",
         "data": {
-          "contract_power_w":     "Potenza contratto (W)",
+          "contract_power_w": "Potenza contratto (W)",
           "battery_capacity_kwh": "Capacità batteria (kWh)",
-          "tariff_enabled":       "Abilita ricarica off-peak",
-          "mqtt_enabled":         "Abilita MQTT"
+          "tariff_enabled": "Abilita ricarica off-peak",
+          "mqtt_enabled": "Abilita MQTT",
+          "initial_user_soc_target": "Target SOC utente (%)",
+          "initial_vehicle_soc_target": "Target SOC veicolo (%)"
         }
       }
     }
